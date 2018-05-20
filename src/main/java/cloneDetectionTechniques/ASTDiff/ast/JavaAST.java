@@ -1,16 +1,16 @@
 package cloneDetectionTechniques.ASTDiff.ast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.comments.Comment;
 import com.github.javaparser.ast.comments.JavadocComment;
 import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.SimpleName;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // represents the AST of a Java file and its hash table
 public class JavaAST {

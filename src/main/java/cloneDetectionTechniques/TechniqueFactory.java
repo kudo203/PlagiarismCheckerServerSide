@@ -1,8 +1,8 @@
 package cloneDetectionTechniques;
 
-import java.io.File;
-
 import cloneDetectionTechniques.ASTDiff.AstDiff;
+
+import java.io.File;
 
 // a singleton factory class for CloneTechnique
 public class TechniqueFactory {

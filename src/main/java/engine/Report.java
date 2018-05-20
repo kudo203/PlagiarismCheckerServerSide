@@ -1,11 +1,11 @@
 package engine;
 
+import cloneDetectionTechniques.TechniqueFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import cloneDetectionTechniques.TechniqueFactory;
 
 //Represents Report class which consists of all the matches between any pair 
 // of files of two projects

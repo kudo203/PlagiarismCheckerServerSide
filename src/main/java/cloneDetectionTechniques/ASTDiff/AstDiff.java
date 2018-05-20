@@ -1,26 +1,19 @@
 package cloneDetectionTechniques.ASTDiff;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileSystemNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import cloneDetectionTechniques.ASTDiff.ast.JavaAST;
+import cloneDetectionTechniques.ASTDiff.ast.WrapperNode;
+import cloneDetectionTechniques.CloneTechnique;
+import cloneDetectionTechniques.TechniqueVisitor;
 import com.github.javaparser.ParseProblemException;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
-
-import cloneDetectionTechniques.CloneTechnique;
-import cloneDetectionTechniques.TechniqueVisitor;
-import cloneDetectionTechniques.ASTDiff.ast.JavaAST;
-import cloneDetectionTechniques.ASTDiff.ast.WrapperNode;
 import engine.Clone;
 import engine.CodeStub;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
+import java.util.*;
 
 // represents a clone detection technique that compares AST Subtrees by hashing them first
 // and comparing the subtrees in the same hash bucket by calculating the min edit distance

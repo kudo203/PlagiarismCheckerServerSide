@@ -1,5 +1,9 @@
 package engine;
 
+import cloneDetectionTechniques.CloneTechnique;
+import cloneDetectionTechniques.TechniqueFactory;
+import cloneDetectionTechniques.TechniqueVisitor;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,10 +11,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-
-import cloneDetectionTechniques.CloneTechnique;
-import cloneDetectionTechniques.TechniqueFactory;
-import cloneDetectionTechniques.TechniqueVisitor;
 
 //Represents a match found between two source
 // files using different clone detection techniques

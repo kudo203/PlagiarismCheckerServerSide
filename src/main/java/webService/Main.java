@@ -1,6 +1,6 @@
-package com.java.uploadfiles;
+package webService;
 
-import com.java.uploadfiles.storage.StorageService;
+import webService.storage.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
 package engine;
 
+import cloneDetectionTechniques.TechniqueFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
-import cloneDetectionTechniques.TechniqueFactory;
 
 //Generates the report for two projects
 public class PlagiarismChecker {
@@ -25,7 +25,7 @@ public class PlagiarismChecker {
      * @return - reused instance of the object
      * @throws Throwable
      */
-    public static PlagiarismChecker getInstance(String path1,String path2) throws Throwable {
+    public static PlagiarismChecker getInstance(String path1, String path2) throws Throwable {
         if(instance==null)
             instance = new PlagiarismChecker();
         setProjects(path1,path2);

@@ -1,15 +1,8 @@
 package cloneDetectionTechniques.ASTDiff.ast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.TreeMap;
-
 import com.github.javaparser.ast.Node;
+
+import java.util.*;
 
 // represents a hash table of nodes in an AST and their hashcodes
 public class HashTable {

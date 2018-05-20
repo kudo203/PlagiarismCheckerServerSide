@@ -1,13 +1,13 @@
 package engine;
 
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseProblemException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseProblemException;
 
 // represents a submission of multiple source files
 public class Project {

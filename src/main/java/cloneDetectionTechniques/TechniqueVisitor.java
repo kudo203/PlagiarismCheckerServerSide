@@ -1,11 +1,10 @@
 package cloneDetectionTechniques;
 
-import java.io.IOException;
-import java.nio.file.FileSystemNotFoundException;
-
+import cloneDetectionTechniques.ASTDiff.AstDiff;
 import com.github.javaparser.ParseProblemException;
 
-import cloneDetectionTechniques.ASTDiff.AstDiff;
+import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
 
 // an interface for a visitor that visits different clone detection techniques
 public class TechniqueVisitor {

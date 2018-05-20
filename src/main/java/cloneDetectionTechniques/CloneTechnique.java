@@ -1,10 +1,10 @@
 package cloneDetectionTechniques;
 
+import engine.Clone;
+
 import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.List;
-
-import engine.Clone;
 
 // interface for different clone detection techniques
 public interface CloneTechnique {

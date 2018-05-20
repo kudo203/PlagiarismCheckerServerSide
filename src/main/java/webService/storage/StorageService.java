@@ -1,14 +1,17 @@
-package com.java.uploadfiles.storage;
+package webService.storage;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class StorageService {
@@ -44,5 +47,23 @@ public class StorageService {
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize storage!");
         }
+    }
+
+    public List<String> getProject1Files(){
+        List<String> allFiles = new ArrayList<>();
+        File[] files = new File(project1Location.toString()).listFiles();
+        for (int i = 0; i < files.length; i++){
+            allFiles.add(files[i].getName());
+        }
+        return allFiles;
+    }
+
+    public List<String> getProject2Files(){
+        List<String> allFiles = new ArrayList<>();
+        File[] files = new File(project2Location.toString()).listFiles();
+        for (int i = 0; i < files.length; i++){
+            allFiles.add(files[i].getName());
+        }
+        return allFiles;
     }
 }
