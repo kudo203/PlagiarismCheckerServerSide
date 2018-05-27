@@ -8,7 +8,9 @@ import com.github.javaparser.ast.comments.LineComment;
 import com.github.javaparser.ast.expr.SimpleName;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,13 +23,11 @@ public class JavaAST {
     // hashtable of all nodes in this AST
 	private HashTable hashTable;
 
-	public JavaAST(File f) throws FileNotFoundException {
-		this.file = f;
+	public JavaAST(File f) throws IOException {
+        this.file = f;
 		hashTable = new HashTable(this);
-
 		// create AST of file using JavaParser lib
-		root = JavaParser.parse(file);
-
+		root = JavaParser.parse(f);
 		removeCommentNodes();
         // updates the hashtable
 		computeASTHashCode(root);

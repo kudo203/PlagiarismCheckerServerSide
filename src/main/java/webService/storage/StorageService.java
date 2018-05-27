@@ -16,8 +16,8 @@ import java.util.List;
 @Service
 public class StorageService {
 
-    private final Path project1Location = Paths.get("src").resolve(Paths.get("main")).resolve("resources").resolve("project-1");
-    private final Path project2Location = Paths.get("src").resolve(Paths.get("main")).resolve("resources").resolve("project-2");
+    public final Path project1Location = Paths.get("src").resolve(Paths.get("main")).resolve("resources").resolve("project-1");
+    public final Path project2Location = Paths.get("src").resolve(Paths.get("main")).resolve("resources").resolve("project-2");
 
     public void storeProject1(MultipartFile file) {
         try {
@@ -35,9 +35,32 @@ public class StorageService {
         }
     }
 
-    public void deleteAll() {
+    public void deleteAll() throws IOException{
         FileSystemUtils.deleteRecursively(project1Location.toFile());
         FileSystemUtils.deleteRecursively(project2Location.toFile());
+    }
+
+    public void deleteOneOne() throws IOException{
+        deleteDirectory(new File(this.project1Location.toAbsolutePath().toString()));
+
+        deleteDirectory(new File(this.project2Location.toAbsolutePath().toString()));
+
+        init();
+    }
+
+    public boolean deleteDirectory(File path) {
+        if (path.exists()) {
+            File[] files = path.listFiles();
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isDirectory()) {
+                    deleteDirectory(files[i]);
+                } else {
+                    boolean m = files[i].delete();
+                    boolean s = true;
+                }
+            }
+        }
+        return (path.delete());
     }
 
     public void init() {

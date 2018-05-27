@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,13 @@ import java.util.List;
 public class Match {
 	// File object for f1
 	private File f1;
+	// File name along with directory
+    private String f1_name;
 	// File object for f2
 	private File f2;
-	// List of result of clones found using different detection techniques
+    // File name along with directory
+    private String f2_name;
+    // List of result of clones found using different detection techniques
 	private List<CloneTechnique> cloneTechniques;
     //String representation of the f1 content
 	private List<String> f1_content;
@@ -31,7 +36,9 @@ public class Match {
 	// constructor and generates similarities
 	public Match(File f1, File f2, TechniqueFactory sf) throws IOException {
 		this.f1 = f1;
-		this.f2 = f2;
+		this.f1_name = Paths.get(f1.getParentFile().getName(), f1.getName()).toString();
+        this.f2 = f2;
+        this.f2_name = Paths.get(f2.getParentFile().getName(), f2.getName()).toString();
 		this.f1_content = populateFileContent(this.f1);
 		this.f2_content = populateFileContent(this.f2);
 		cloneTechniques = new ArrayList<CloneTechnique>();
@@ -88,24 +95,18 @@ public class Match {
 			matcheLinesf2 += c2.getFile2Stub().getSpan() * c2.getSimilarity();
 		}
 
-		try {
-			double f1lines = Files.lines(f1.toPath()).count();
-			double f2lines = Files.lines(f2.toPath()).count();
-			
-			if (sw) {
-				f2lines = Files.lines(f1.toPath()).count();
-				f1lines = Files.lines(f2.toPath()).count();
-					
-			}
-			double simf1 = matcheLinesf1 / f1lines;
-			double simf2 = matcheLinesf2 / f2lines;
+        double f1lines = f1_content.size();
+        double f2lines = f2_content.size();
 
-			return Math.max(simf1, simf2);
+        if (sw) {
+            f2lines = f1_content.size();
+            f1lines = f2_content.size();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return 0;
+        }
+        double simf1 = matcheLinesf1 / f1lines;
+        double simf2 = matcheLinesf2 / f2lines;
+
+        return Math.max(simf1, simf2);
 
 	}
 
@@ -122,6 +123,7 @@ public class Match {
 		while ((str = in.readLine()) != null) {
 			file_content.add(str);
 		}
+		in.close();
 		return file_content;
 	}
 
@@ -132,20 +134,26 @@ public class Match {
 	public List<CloneTechnique> getClones() {
 		return cloneTechniques;
 	}
-
-    /**
+	/**
      * getter for File f1
      */
-	public File getF1() {
-		return f1;
-	}
+	//public File getF1() {
+	//	return f1;
+	//}
+    public String getF1_name() {
+        return this.f1_name;
+    }
 
     /**
      * getter for File f2
      */
-	public File getF2() {
-		return f2;
-	}
+	//public File getF2() {
+	//	return f2;
+	//}
+
+    public String getF2_name(){
+        return this.f2_name;
+    }
 
     /**
      * getter for File content of f2
