@@ -36,7 +36,13 @@ public class Report {
      * Techniques
      */
 	public List<Match> getMatches() {
-		matches.sort((m1 , m2) -> m2.getSimilarity().compareTo(m1.getSimilarity()));
 		return matches;
+	}
+
+	/**
+	 * Sorts the matches according to the similarity ratio
+	 */
+	public void sortMatches(){
+		matches.sort((m1 , m2) -> m2.getSimilarity().compareTo(m1.getSimilarity()));
 	}
 }

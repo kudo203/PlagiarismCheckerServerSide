@@ -73,6 +73,7 @@ public class PlagiarismChecker {
                 finalReport.findMatches(f1,f2,tf);
             }
         }
+        finalReport.sortMatches();
         return finalReport;
     }
 }

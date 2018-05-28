@@ -3,6 +3,7 @@ package engine;
 import cloneDetectionTechniques.CloneTechnique;
 import cloneDetectionTechniques.TechniqueFactory;
 import cloneDetectionTechniques.TechniqueVisitor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -131,25 +132,19 @@ public class Match {
      *Getter for list of similarities derived from
      * different techniques
      */
-	public List<CloneTechnique> getClones() {
+	public List<CloneTechnique> getCloneTechniques() {
 		return cloneTechniques;
 	}
 	/**
-     * getter for File f1
+     * getter for File f1 name
      */
-	//public File getF1() {
-	//	return f1;
-	//}
     public String getF1_name() {
         return this.f1_name;
     }
 
     /**
-     * getter for File f2
+     * getter for File f2 name
      */
-	//public File getF2() {
-	//	return f2;
-	//}
 
     public String getF2_name(){
         return this.f2_name;

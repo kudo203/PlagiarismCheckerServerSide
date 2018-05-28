@@ -69,8 +69,9 @@ public class FileController {
     @RequestMapping("/api/deleteAll")
     public ResponseEntity<String> deleteAllFiles(){
         try{
-            storageService.deleteOneOne();
-            //storageService.init();
+            storageService.deleteAll();
+
+            storageService.init();
             return new ResponseEntity<String>(HttpStatus.OK);
         }
         catch(Exception ex){

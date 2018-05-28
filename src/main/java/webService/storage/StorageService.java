@@ -40,29 +40,6 @@ public class StorageService {
         FileSystemUtils.deleteRecursively(project2Location.toFile());
     }
 
-    public void deleteOneOne() throws IOException{
-        deleteDirectory(new File(this.project1Location.toAbsolutePath().toString()));
-
-        deleteDirectory(new File(this.project2Location.toAbsolutePath().toString()));
-
-        init();
-    }
-
-    public boolean deleteDirectory(File path) {
-        if (path.exists()) {
-            File[] files = path.listFiles();
-            for (int i = 0; i < files.length; i++) {
-                if (files[i].isDirectory()) {
-                    deleteDirectory(files[i]);
-                } else {
-                    boolean m = files[i].delete();
-                    boolean s = true;
-                }
-            }
-        }
-        return (path.delete());
-    }
-
     public void init() {
         try {
             Files.createDirectory(project1Location);
@@ -75,6 +52,8 @@ public class StorageService {
     public List<String> getProject1Files(){
         List<String> allFiles = new ArrayList<>();
         File[] files = new File(project1Location.toString()).listFiles();
+        if(files == null)
+            return allFiles;
         for (int i = 0; i < files.length; i++){
             allFiles.add(files[i].getName());
         }
@@ -84,6 +63,8 @@ public class StorageService {
     public List<String> getProject2Files(){
         List<String> allFiles = new ArrayList<>();
         File[] files = new File(project2Location.toString()).listFiles();
+        if(files == null)
+            return allFiles;
         for (int i = 0; i < files.length; i++){
             allFiles.add(files[i].getName());
         }
